@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { eventService } from '../services/api';
 import { Event } from '../types';
 
+
 const EventsList: React.FC = () => {
   const { data: events, isLoading, error } = useQuery<Event[]>({
     queryKey: ['events'],
@@ -99,23 +100,20 @@ const EventsList: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Upcoming Events Section */}
-        <div className="mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Événements à venir</h1>
-          {upcomingEvents.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {upcomingEvents.map(renderEventCard)}
-            </div>
-          ) : (
-            <p className="text-gray-500 text-center">Aucun événement à venir</p>
-          )}
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" id="events">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">Événements à venir</h1>
+        {upcomingEvents.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {upcomingEvents.map(renderEventCard)}
+          </div>
+        ) : (
+          <p className="text-gray-500 text-center">Aucun événement à venir</p>
+        )}
 
         {/* Past Events Section */}
         {pastEvents.length > 0 && (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Événements passés</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 mt-3">Événements passés</h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {pastEvents.map(renderEventCard)}
             </div>
